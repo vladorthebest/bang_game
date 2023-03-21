@@ -38,10 +38,17 @@ public class Player {
         for (BaseCard card : hand) {
             sb.append(index++);
             sb.append(" ");
-            sb.append(card.name);
+            sb.append(card);
             sb.append(", ");
         }
         return sb.toString();
     }
 
+    public boolean useMissing(){
+        return true;
+    }
+
+    public void takeLife(){
+
+    }
 }
