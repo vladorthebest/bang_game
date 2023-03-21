@@ -1,13 +1,17 @@
 package sk.stuba.fei.uim.oop.game.bang.player;
 
+import sk.stuba.fei.uim.oop.game.bang.cards.ActiveCard;
+import sk.stuba.fei.uim.oop.game.bang.cards.EmptyCard;
 import sk.stuba.fei.uim.oop.game.bang.share.Deck;
 import sk.stuba.fei.uim.oop.game.bang.cards.BaseCard;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Player {
 
 
     private StringBuilder nickname;
+    Scanner in = new Scanner(System.in);
     private int hp;
     private boolean isDead;
     // Hand with cards
@@ -70,4 +74,49 @@ public class Player {
     public void addHP(int hp){
         this.hp += hp;
     }
+
+    public void playCard(LinkedList<Player> players){
+        BaseCard card;
+        System.out.println("Turn " + this.nickname);
+
+        while (true){
+            card = this.choiseCard();
+            if(card.toString().isEmpty()){
+                break;
+            }
+            if(card.needTarget()){
+                card.use(this, this.choiseTarget(players));
+            }else {
+                card.use(this, this);
+            }
+
+            System.out.println(this.getNickname() + this.getHand());
+        }
+    }
+
+    private BaseCard choiseCard(){
+        int indexCard = -1;
+        BaseCard card = new EmptyCard();
+        while (true){
+            System.out.print("Input index card: ");
+            indexCard = in.nextInt() - 1;
+            if(indexCard == -1){
+                break;
+            }else if(indexCard > hand.size()){
+                System.out.println("Invalid index");
+            }else {
+                card = this.hand.get(indexCard);
+                this.hand.remove(indexCard);
+                break;
+            }
+        }
+        return card;
+    }
+
+    private Player choiseTarget(LinkedList<Player> players){
+        System.out.print("Input index target player: ");
+        int indexPlayer = in.nextInt() - 1;
+        return players.get(indexPlayer);
+    }
+
 }

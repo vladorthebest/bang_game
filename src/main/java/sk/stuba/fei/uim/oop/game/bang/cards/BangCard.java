@@ -7,6 +7,7 @@ public class BangCard extends ActiveCard{
     {
         this.name = "BANG!";
         this.type = Color.BROWN;
+        this.target = true;
     }
 
     @Override
