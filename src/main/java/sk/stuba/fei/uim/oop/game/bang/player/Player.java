@@ -5,7 +5,9 @@ import sk.stuba.fei.uim.oop.game.bang.cards.BaseCard;
 import java.util.LinkedList;
 
 public class Player {
-    private String nickname;
+
+
+    private StringBuilder nickname;
     private int hp;
     private boolean isDead;
     // Hand with cards
@@ -15,7 +17,7 @@ public class Player {
     private LinkedList<BaseCard> table;
 
     public Player(String nickname){
-        this.nickname = nickname;
+        this.nickname = new StringBuilder(nickname);
         this.hp = 4;
         this.hand = new LinkedList<BaseCard>();
         this.table = new LinkedList<BaseCard>();
@@ -30,6 +32,11 @@ public class Player {
             hand.add(deck.draw());
         }
     }
+
+    public String getNickname() {
+        return nickname.toString();
+    }
+
     public String getHand(){
         if (hand.isEmpty())
             return "No cards";
