@@ -2,6 +2,7 @@ package sk.stuba.fei.uim.oop.game.bang;
 
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 import sk.stuba.fei.uim.oop.game.bang.share.Deck;
+import sk.stuba.fei.uim.oop.game.bang.share.UserInterface;
 
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -10,6 +11,7 @@ public class Bang {
 
     Scanner in = new Scanner(System.in);
     LinkedList<Player> players = new LinkedList<>();
+    UserInterface ui = new UserInterface();
     Deck deck;
     public Bang(){
         System.out.println("How many players?");
@@ -37,8 +39,10 @@ public class Bang {
     }
 
     public void turn(Player player){
+        ui.drawStartTurn();
+        ui.drawOwnerTurn(player);
         player.draw(this.deck);
-        System.out.println(player.getNickname() + player.getHand());
+        ui.drawPlayersHand(player);
         player.playCard(players);
         player.discarding();
     }

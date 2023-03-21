@@ -4,12 +4,14 @@ import sk.stuba.fei.uim.oop.game.bang.cards.ActiveCard;
 import sk.stuba.fei.uim.oop.game.bang.cards.EmptyCard;
 import sk.stuba.fei.uim.oop.game.bang.share.Deck;
 import sk.stuba.fei.uim.oop.game.bang.cards.BaseCard;
+import sk.stuba.fei.uim.oop.game.bang.share.UserInterface;
+
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Player {
 
-
+    UserInterface ui = new UserInterface();
     private StringBuilder nickname;
     Scanner in = new Scanner(System.in);
     private int hp;
@@ -75,11 +77,15 @@ public class Player {
         this.hp += hp;
     }
 
+    public int getHP(){
+        return this.hp;
+    }
+
     public void playCard(LinkedList<Player> players){
         BaseCard card;
-        System.out.println("Turn " + this.nickname);
 
         while (true){
+            ui.drawPlayer(this);
             card = this.choiseCard();
             if(card.toString().isEmpty()){
                 break;
@@ -89,8 +95,8 @@ public class Player {
             }else {
                 card.use(this, this);
             }
+            ui.drawPlayersHand(this);
 
-            System.out.println(this.getNickname() + this.getHand());
         }
     }
 
