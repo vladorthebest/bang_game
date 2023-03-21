@@ -13,7 +13,7 @@ public class BangCard extends ActiveCard{
     @Override
     public void use(Player usingPlayer, Player targetPlayer) {
         if (!targetPlayer.useMissing()){
-            targetPlayer.takeHP();
+            targetPlayer.damageHP(1);
         }
     }
 }

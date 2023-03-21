@@ -17,4 +17,8 @@ public class UserInterface {
     public void drawPlayersHand(Player player){
         System.out.println(player.getHand());
     }
+
+    public void drawWinner(Player player) {
+        System.out.println("Winner: " + player.getNickname());
+    }
 }

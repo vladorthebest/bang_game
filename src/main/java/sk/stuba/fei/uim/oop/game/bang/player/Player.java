@@ -15,7 +15,10 @@ public class Player {
     private StringBuilder nickname;
     Scanner in = new Scanner(System.in);
     private int hp;
-    private boolean isDead;
+
+
+
+    private boolean isDead = false;
     // Hand with cards
     private LinkedList<BaseCard> hand;
 
@@ -24,7 +27,7 @@ public class Player {
 
     public Player(String nickname){
         this.nickname = new StringBuilder(nickname);
-        this.hp = 4;
+        this.hp = 1;
         this.hand = new LinkedList<BaseCard>();
         this.table = new LinkedList<BaseCard>();
     }
@@ -51,6 +54,13 @@ public class Player {
         return nickname.toString();
     }
 
+    public boolean isDead() {
+        if(this.hp == 0){
+            this.isDead = true;
+        }
+        return isDead;
+    }
+
     public String getHand(){
         if (hand.isEmpty())
             return "No cards";
@@ -66,11 +76,11 @@ public class Player {
     }
 
     public boolean useMissing(){
-        return true;
+        return false;
     }
 
-    public void takeHP(){
-
+    public void damageHP(int dmg){
+        this.hp -= dmg;
     }
 
     public void addHP(int hp){

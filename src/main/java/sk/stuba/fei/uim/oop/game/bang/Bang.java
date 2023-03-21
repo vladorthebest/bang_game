@@ -26,25 +26,46 @@ public class Bang {
     public void start() {
         // Game
         deck = new Deck();
-        for(Player player : players){
-            player.initDraw(deck);
-            System.out.println( player.getNickname() + player.getHand());
-        }
 
+            for(Player player : players){
+                player.initDraw(deck);
+                System.out.println( player.getNickname() + player.getHand());
+            }
+        while (checkPlayersHP()){
+            for(Player player : players){
+                this.turn(player);
+            }
+        }
         for(Player player : players){
-            this.turn(player);
-            System.out.println(player.getNickname() + player.getHand());
+            if(!player.isDead()){
+                ui.drawWinner(player);
+            }
         }
 
     }
 
-    public void turn(Player player){
-        ui.drawStartTurn();
-        ui.drawOwnerTurn(player);
-        player.draw(this.deck);
-        ui.drawPlayersHand(player);
-        player.playCard(players);
-        player.discarding();
+    private boolean checkPlayersHP(){
+        int countLife = 0;
+        for(Player player : players){
+            if(!player.isDead()){
+                countLife += 1;
+            }
+        }
+        if(countLife >= 2){
+            return true;
+        }
+        return false;
+
+    }
+    private  void turn(Player player){
+        if(!player.isDead()){
+            ui.drawStartTurn();
+            ui.drawOwnerTurn(player);
+            player.draw(this.deck);
+            ui.drawPlayersHand(player);
+            player.playCard(players);
+            player.discarding();
+        }
     }
 
 
