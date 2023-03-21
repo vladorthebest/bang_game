@@ -48,7 +48,11 @@ public class Player {
         return true;
     }
 
-    public void takeLife(){
+    public void takeHP(){
 
+    }
+
+    public void addHP(int hp){
+        this.hp += hp;
     }
 }
