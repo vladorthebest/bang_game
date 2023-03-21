@@ -1,9 +1,6 @@
 package sk.stuba.fei.uim.oop.game.bang.share;
 
-import sk.stuba.fei.uim.oop.game.bang.cards.BangCard;
-import sk.stuba.fei.uim.oop.game.bang.cards.BaseCard;
-import sk.stuba.fei.uim.oop.game.bang.cards.BeerCard;
-import sk.stuba.fei.uim.oop.game.bang.cards.MissedCard;
+import sk.stuba.fei.uim.oop.game.bang.cards.*;
 
 import java.util.LinkedList;
 import java.util.Random;
@@ -12,6 +9,7 @@ public class Deck {
     private final int COUNT_MISSED = 15; // 15
     private final int COUNT_BANG = 30; // 30
     private final int COUNT_BEER = 8; // 8
+    private final int COUNT_STAGECOACH = 4; // 4
 
     private LinkedList<BaseCard> cards;
     Random randomGenerator = new Random();
@@ -29,6 +27,9 @@ public class Deck {
         }
         for(int i=0; i<COUNT_BEER; i++){
             cards.add(new BeerCard());
+        }
+        for(int i=0; i<COUNT_STAGECOACH; i++){
+            cards.add(new StagecoachCard());
         }
     }
 

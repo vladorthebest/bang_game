@@ -41,7 +41,7 @@ public class Bang {
     public void turn(Player player){
         ui.drawStartTurn();
         ui.drawOwnerTurn(player);
-        player.draw(this.deck);
+        player.draw(2);
         ui.drawPlayersHand(player);
         player.playCard(players);
         player.discarding();

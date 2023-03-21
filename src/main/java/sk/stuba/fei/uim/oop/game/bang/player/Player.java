@@ -19,6 +19,8 @@ public class Player {
     // Hand with cards
     private LinkedList<BaseCard> hand;
 
+    private Deck deck;
+
     // Table with cards
     private LinkedList<BaseCard> table;
 
@@ -29,13 +31,14 @@ public class Player {
         this.table = new LinkedList<BaseCard>();
     }
 
-    public void draw (Deck deck){
-        for (int i = 0; i < 2; i++) {
-            hand.add(deck.draw());
+    public void draw (int count){
+        for (int i = 0; i < count; i++) {
+            hand.add(this.deck.draw());
         }
     }
 
     public void initDraw (Deck deck){
+        this.deck = deck;
         for (int i = 0; i < this.hp; i++) {
             hand.add(deck.draw());
         }
@@ -123,6 +126,10 @@ public class Player {
         System.out.print("Input index target player: ");
         int indexPlayer = in.nextInt() - 1;
         return players.get(indexPlayer);
+    }
+
+    public void addCard(BaseCard card){
+        this.hand.add(card);
     }
 
 }
