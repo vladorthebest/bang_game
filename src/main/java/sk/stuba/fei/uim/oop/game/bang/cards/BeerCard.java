@@ -2,7 +2,7 @@ package sk.stuba.fei.uim.oop.game.bang.cards;
 
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 
-public class BeerCard extends BaseActiveCard{
+public class BeerCard extends ActiveNoneTargetCard{
 
     {
         this.name = "Beer";
@@ -10,7 +10,7 @@ public class BeerCard extends BaseActiveCard{
 
     }
     @Override
-    public void use(Player usingPlayer, Player targetPlayer) {
-        targetPlayer.addHP(1);
+    public void use(Player usingPlayer) {
+        usingPlayer.addHP(1);
     }
 }
