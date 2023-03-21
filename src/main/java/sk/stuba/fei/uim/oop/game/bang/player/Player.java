@@ -24,12 +24,20 @@ public class Player {
     }
 
     public void draw (Deck deck){
-        return;
+        for (int i = 0; i < 2; i++) {
+            hand.add(deck.draw());
+        }
     }
 
     public void initDraw (Deck deck){
         for (int i = 0; i < this.hp; i++) {
             hand.add(deck.draw());
+        }
+    }
+
+    public void discarding(){
+        for (int i = hand.size(); i > this.hp; i--) {
+            hand.remove();
         }
     }
 

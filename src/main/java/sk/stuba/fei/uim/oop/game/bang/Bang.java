@@ -11,7 +11,7 @@ public class Bang {
 
     Scanner in = new Scanner(System.in);
     LinkedList<Player> players = new LinkedList<Player>();
-
+    Deck deck;
     public Bang(){
         System.out.println("How many players?");
         int lenPlayers = in.nextInt();
@@ -24,17 +24,23 @@ public class Bang {
 
     public void start() {
         // Game
-        Deck deck = new Deck();
+        deck = new Deck();
         for(Player player : players){
             player.initDraw(deck);
             System.out.println(player.getNickname() + player.getHand());
         }
 
+        for(Player player : players){
+            this.turn(player);
+            System.out.println(player.getNickname() + player.getHand());
+        }
 
     }
 
-    public void turn(){
-        // TODO
+    public void turn(Player player){
+        player.draw(this.deck);
+        System.out.println(player.getNickname() + player.getHand());
+        player.discarding();
     }
 
 
