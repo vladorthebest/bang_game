@@ -1,31 +1,33 @@
 package sk.stuba.fei.uim.oop.game.bang.player;
 
 import sk.stuba.fei.uim.oop.game.bang.cards.EmptyCard;
+import sk.stuba.fei.uim.oop.game.bang.effects.BaseEffect;
+import sk.stuba.fei.uim.oop.game.bang.effects.EffectType;
 import sk.stuba.fei.uim.oop.game.bang.share.Deck;
 import sk.stuba.fei.uim.oop.game.bang.cards.BaseCard;
 import sk.stuba.fei.uim.oop.game.bang.share.UserInterface;
 
+import java.text.Collator;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Player {
 
+    // ARGUMENTS
+
     private UserInterface ui;
     private StringBuilder nickname;
     Scanner in = new Scanner(System.in);
     private int hp;
-
-
-
     private boolean isDead = false;
     // Hand with cards
     private LinkedList<BaseCard> hand;
-
+    private LinkedList<BaseEffect> table;
     private Deck deck;
 
-    // Table with cards
-    private LinkedList<BaseCard> table;
 
+    // CONSTRUCTOR
     public Player(String nickname, UserInterface ui){
         this.ui = ui;
         this.nickname = new StringBuilder(nickname);
@@ -34,6 +36,8 @@ public class Player {
         this.table = new LinkedList<>();
     }
 
+
+    // DRAW
     public void draw (int count){
         for (int i = 0; i < count; i++) {
             hand.add(this.deck.draw());
@@ -53,6 +57,8 @@ public class Player {
         }
     }
 
+
+    // GET
     public String getNickname() {
         return nickname.toString();
     }
@@ -78,10 +84,39 @@ public class Player {
         return sb.toString();
     }
 
-    public boolean useMissing(){
-        return false;
+
+    // USE EFFECTS
+
+    public void sortTable(){
+        table.sort( new Comparator<BaseEffect>(){
+            @Override
+            public int compare(BaseEffect a,BaseEffect b){
+                return b.getPriority() - a.getPriority();
+            }
+        });
     }
 
+    public void useStartEffects(){
+        for(BaseEffect effect : table){
+            if(effect.getType() == EffectType.START){
+                effect.use();
+                table.remove(effect);
+            }
+        }
+    }
+
+    public boolean useMissing(){
+        boolean isWorked = false;
+        for(BaseEffect effect : table){
+            if(effect.getType() == EffectType.MISS){
+                isWorked = effect.use();
+                table.remove(effect);
+            }
+        }
+        return isWorked;
+    }
+
+    // HP
     public void damageHP(int dmg){
         this.hp -= dmg;
     }
@@ -94,6 +129,7 @@ public class Player {
         return this.hp;
     }
 
+    // PLAY CARD
     public void playCard(LinkedList<Player> players){
         BaseCard card;
         Player player;

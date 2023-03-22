@@ -44,7 +44,7 @@ public class Bang {
         }
 
     }
-    
+
 
     private boolean checkPlayersHP(){
         int countLife = 0;
@@ -64,10 +64,12 @@ public class Bang {
         if(!player.isDead()){
             ui.drawStartTurn();
             ui.drawOwnerTurn(player);
+            player.sortTable();
             player.draw(2);
             ui.drawPlayersHand(player);
             player.playCard(players);
             player.discarding();
+            player.sortTable();
         }
     }
 
