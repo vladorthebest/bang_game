@@ -86,15 +86,20 @@ public class Player {
 
     public void playCard(LinkedList<Player> players){
         BaseCard card;
-
+        Player player;
         while (true){
             ui.drawPlayer(this);
             card = this.choiseCard();
-            if(card.toString().isEmpty()){
+            if(card == null){
                 break;
             }
+
             if(card.needTarget()){
-                card.use(this, this.choiseTarget(players));
+                player = this.choiseTarget(players);
+                if(player == null){
+                    break;
+                }
+                card.use(this, player);
             }else {
                 card.use(this, this);
             }
@@ -109,23 +114,32 @@ public class Player {
         while (true){
             System.out.print("Input index card: ");
             indexCard = in.nextInt() - 1;
-            if(indexCard == -1){
+            if(indexCard < 0){
                 break;
-            }else if(indexCard > hand.size()){
+            }else if(indexCard >= hand.size()){
                 System.out.println("Invalid index");
             }else {
                 card = this.hand.get(indexCard);
                 this.hand.remove(indexCard);
-                break;
+                return card;
             }
         }
-        return card;
+        return null;
     }
 
     private Player choiseTarget(LinkedList<Player> players){
-        System.out.print("Input index target player: ");
-        int indexPlayer = in.nextInt() - 1;
-        return players.get(indexPlayer);
+        while (true){
+            System.out.print("Input index target player: ");
+            int indexPlayer = in.nextInt() - 1;
+            if(indexPlayer < 0){
+                break;
+            }else if(indexPlayer >= players.size()){
+                System.out.println("Invalid index");
+            }else {
+                return players.get(indexPlayer);
+            }
+        }
+        return null;
     }
 
     public void addCard(BaseCard card){
