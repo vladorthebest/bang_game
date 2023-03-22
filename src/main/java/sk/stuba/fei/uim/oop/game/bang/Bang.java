@@ -18,8 +18,9 @@ public class Bang {
         int lenPlayers = in.nextInt();
         for(int i=0; i<lenPlayers; i++){
             System.out.println("Nickname for player " + (i+1));
-            players.add(new Player(in.next()));
+            players.add(new Player(in.next(), ui));
         }
+        ui.addPlayers(players);
 
     }
 

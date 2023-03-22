@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Player {
 
-    UserInterface ui = new UserInterface();
+    private UserInterface ui;
     private StringBuilder nickname;
     Scanner in = new Scanner(System.in);
     private int hp;
@@ -24,7 +24,8 @@ public class Player {
     // Table with cards
     private LinkedList<BaseCard> table;
 
-    public Player(String nickname){
+    public Player(String nickname, UserInterface ui){
+        this.ui = ui;
         this.nickname = new StringBuilder(nickname);
         this.hp = 4;
         this.hand = new LinkedList<BaseCard>();
@@ -95,7 +96,7 @@ public class Player {
             }
 
             if(card.needTarget()){
-                player = this.choiseTarget(players);
+                player = ui.choiseTarget();
                 if(player == null){
                     break;
                 }
@@ -122,21 +123,6 @@ public class Player {
                 card = this.hand.get(indexCard);
                 this.hand.remove(indexCard);
                 return card;
-            }
-        }
-        return null;
-    }
-
-    private Player choiseTarget(LinkedList<Player> players){
-        while (true){
-            System.out.print("Input index target player: ");
-            int indexPlayer = in.nextInt() - 1;
-            if(indexPlayer < 0){
-                break;
-            }else if(indexPlayer >= players.size()){
-                System.out.println("Invalid index");
-            }else {
-                return players.get(indexPlayer);
             }
         }
         return null;
