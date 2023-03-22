@@ -27,9 +27,9 @@ public class Player {
 
     public Player(String nickname){
         this.nickname = new StringBuilder(nickname);
-        this.hp = 1;
-        this.hand = new LinkedList<BaseCard>();
-        this.table = new LinkedList<BaseCard>();
+        this.hp = 4;
+        this.hand = new LinkedList<>();
+        this.table = new LinkedList<>();
     }
 
     public void draw (Deck deck){
