@@ -14,7 +14,7 @@ public class BangCard extends TargetCard{
         Player targetPlayer = super.targeting(usingPlayer);
 
         if (!targetPlayer.useMissing()){
-            targetPlayer.takeHP();
+            targetPlayer.damageHP(1);
         }
     }
 }

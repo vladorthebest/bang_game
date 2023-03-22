@@ -80,18 +80,23 @@ public class UserInterface {
         return str.toString();
     }
 
-    public Player choiseTarget(){
-        while (true){
+    public Player choiseTarget() {
+        while (true) {
             System.out.print("Input index target player: ");
             int indexPlayer = in.nextInt() - 1;
-            if(indexPlayer < 0){
+            if (indexPlayer < 0) {
                 break;
-            }else if(indexPlayer >= players.size()){
+            } else if (indexPlayer >= players.size()) {
                 System.out.println("Invalid index");
-            }else {
+            } else {
                 return players.get(indexPlayer);
             }
         }
         return null;
+    }
+
+    public void drawWinner(Player player) {
+        System.out.println("Winner: " + player.getNickname());
+
     }
 }
