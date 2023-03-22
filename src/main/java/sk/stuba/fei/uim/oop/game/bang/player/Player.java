@@ -1,6 +1,5 @@
 package sk.stuba.fei.uim.oop.game.bang.player;
 
-import sk.stuba.fei.uim.oop.game.bang.cards.ActiveCard;
 import sk.stuba.fei.uim.oop.game.bang.cards.EmptyCard;
 import sk.stuba.fei.uim.oop.game.bang.share.Deck;
 import sk.stuba.fei.uim.oop.game.bang.cards.BaseCard;
@@ -94,16 +93,8 @@ public class Player {
             if(card == null){
                 break;
             }
+            card.use(this);
 
-            if(card.needTarget()){
-                player = ui.choiseTarget();
-                if(player == null){
-                    break;
-                }
-                card.use(this, player);
-            }else {
-                card.use(this, this);
-            }
             ui.drawPlayersHand(this);
 
         }
@@ -111,7 +102,7 @@ public class Player {
 
     private BaseCard choiseCard(){
         int indexCard = -1;
-        BaseCard card = new EmptyCard();
+        BaseCard card;
         while (true){
             System.out.print("Input index card: ");
             indexCard = in.nextInt() - 1;
@@ -130,6 +121,10 @@ public class Player {
 
     public void addCard(BaseCard card){
         this.hand.add(card);
+    }
+
+    public Player choiseTarget() {
+        return ui.choiseTarget();
     }
 
 }

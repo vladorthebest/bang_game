@@ -2,15 +2,14 @@ package sk.stuba.fei.uim.oop.game.bang.cards;
 
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 
-public class MissedCard extends PassiveCard{
+public class MissedCard extends NoneTargetCard {
     {
         this.name = "Missed";
         this.type = Color.BROWN;
-        this.target = false;
     }
 
     @Override
-    public void use(Player usingPlayer, Player targetPlayer) {
+    public void use(Player usingPlayer) {
         usingPlayer.addCard(this);
     }
 }
