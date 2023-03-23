@@ -3,22 +3,28 @@ package sk.stuba.fei.uim.oop.game.bang;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 import sk.stuba.fei.uim.oop.game.bang.share.Deck;
 import sk.stuba.fei.uim.oop.game.bang.share.UserInterface;
+import sk.stuba.fei.uim.oop.utility.KeyboardInput;
+import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Bang {
 
-    Scanner in = new Scanner(System.in);
+    ZKlavesnice in = new ZKlavesnice();
     LinkedList<Player> players = new LinkedList<>();
     UserInterface ui = new UserInterface();
     Deck deck;
     public Bang(){
-        System.out.println("How many players?");
-        int lenPlayers = in.nextInt();
+        int lenPlayers;
+        do{
+            lenPlayers = in.readInt("How many players? (2-4)");
+            if (lenPlayers < 2 || lenPlayers > 4)
+                System.out.println("Invalid input");
+        } while (lenPlayers < 2 || lenPlayers > 4);
+
         for(int i=0; i<lenPlayers; i++){
-            System.out.println("Nickname for player " + (i+1));
-            players.add(new Player(in.next(), ui, players));
+            players.add(new Player(in.readString("Nickname for player " + (i+1)), ui, players));
         }
         ui.addPlayers(players);
 

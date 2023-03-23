@@ -7,6 +7,7 @@ import sk.stuba.fei.uim.oop.game.bang.effects.MissedEffect;
 import sk.stuba.fei.uim.oop.game.bang.share.Deck;
 import sk.stuba.fei.uim.oop.game.bang.cards.BaseCard;
 import sk.stuba.fei.uim.oop.game.bang.share.UserInterface;
+import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.text.Collator;
 import java.util.Comparator;
@@ -19,8 +20,9 @@ public class Player extends BasePlayer{
     // ARGUMENTS
     private UserInterface ui;
     LinkedList<Player> players;
+
     private PlayerInterface uiPlayer;
-    Scanner in = new Scanner(System.in);
+    ZKlavesnice in = new ZKlavesnice();
     private Deck deck;
 
 
@@ -137,8 +139,7 @@ public class Player extends BasePlayer{
         int indexCard = -1;
         BaseCard card;
         while (true){
-            System.out.print("Input index card: ");
-            indexCard = in.nextInt() - 1;
+            indexCard = in.readInt("Input index card: ") - 1;
             if(indexCard < 0){
                 break;
             }else if(indexCard >= hand.size()){

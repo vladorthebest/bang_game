@@ -3,6 +3,7 @@ package sk.stuba.fei.uim.oop.game.bang.cards;
 import sk.stuba.fei.uim.oop.game.bang.effects.BaseEffect;
 import sk.stuba.fei.uim.oop.game.bang.effects.EffectType;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
+import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -11,7 +12,7 @@ import java.util.Scanner;
 
 public class CatBalouCard extends TargetCard{
     private Random randomGenerator = new Random();
-    Scanner in = new Scanner(System.in);
+    ZKlavesnice in = new ZKlavesnice();
 
     {
         this.name = "Cat Balou";
@@ -49,8 +50,7 @@ public class CatBalouCard extends TargetCard{
             System.out.println("Table is empty");
             discardingCard(targetHand);
         } else {
-            System.out.println("Choise: \n 1) Hand 2) Table");
-            switch (in.nextInt()){
+            switch (in.readInt("Choise: \n 1) Hand 2) Table")){
                 case 1:
                     discardingCard(targetHand);
                     break;
