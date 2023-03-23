@@ -13,7 +13,7 @@ public class ZKlavesnice {
             c = (char) zklavesnice.read();
             //System.out.println("Nacital som " + c);
         } catch (Exception e) {
-            System.out.println("nepodarilo sa");
+            System.out.println("Invalid input");
             c = readChar(napis_pre_uzivatela);
         }
 
@@ -28,7 +28,7 @@ public class ZKlavesnice {
             s = zklavesnice.readLine();
             //System.out.println("Nacital som " + s);
         } catch (Exception e) {
-            System.out.println("nepodarilo sa");
+            System.out.println("Invalid input");
             s = readString(napis_pre_uzivatela);
         }
 
@@ -45,7 +45,7 @@ public class ZKlavesnice {
             //System.out.println("Nacital som " + s);
             n = Integer.parseInt(s);
         } catch (Exception e) {
-            System.out.println("nepodarilo sa");
+            System.out.println("Invalid input");
             n = readInt(napis_pre_uzivatela);
         }
 
@@ -62,7 +62,7 @@ public class ZKlavesnice {
             //System.out.println("Nacital som " + s);
             x = Double.parseDouble(s);
         } catch (Exception e) {
-            System.out.println("nepodarilo sa");
+            System.out.println("Invalid input");
             x = readDouble(napis_pre_uzivatela);
         }
 
