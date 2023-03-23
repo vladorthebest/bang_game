@@ -34,7 +34,8 @@ public class Bang {
             }
         while (checkPlayersHP()){
             for(Player player : players){
-                this.turn(player);
+                if(!player.isDead())
+                    this.turn(player);
             }
         }
         for(Player player : players){
@@ -65,6 +66,10 @@ public class Bang {
             ui.drawStartTurn();
             ui.drawOwnerTurn(player);
             player.sortTable();
+            if(!player.useStartEffects()){
+                System.out.println("Skip turn");
+                return;
+            }
             player.draw(2);
             ui.drawPlayersHand(player);
             ui.drawPlayersTable(player);

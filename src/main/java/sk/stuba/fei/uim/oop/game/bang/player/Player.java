@@ -76,13 +76,20 @@ public class Player extends BasePlayer{
         });
     }
 
-    public void useStartEffects(){
-        for(BaseEffect effect : table){
+    public boolean useStartEffects(){
+        boolean isWorked = false;
+        for (Iterator<BaseEffect> iterator = table.iterator(); iterator.hasNext(); ) {
+            BaseEffect effect = iterator.next();
             if(effect.getType() == EffectType.START){
-                effect.use(this);
-                table.remove(effect);
+                isWorked = effect.use(this);
+                if( (effect.isDisposable() && isWorked) || effect.isAllwaysDisposable())
+                    iterator.remove();
+
+                if(this.isDead() || (effect.getName() == "Prison" && isWorked == true))
+                    return false;
             }
         }
+        return true;
     }
 
     public boolean useMissingEffects(){

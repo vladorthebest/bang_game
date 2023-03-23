@@ -4,18 +4,19 @@ import sk.stuba.fei.uim.oop.game.bang.player.Player;
 
 import java.util.Random;
 
-public class BarrelEffect extends BaseEffect{
+public class PrisonEffect extends BaseEffect{
 
-    private int chance = 4;
+    private int chance;
     private Random randomGenerator = new Random();
 
 
     {
-        this.name = "Barrel";
+        this.chance = 8;
+        this.name = "Prison";
         this.priority = 1;
-        this.type = EffectType.MISS;
+        this.type = EffectType.START;
         this.disposable = true;
-        this.allwaysDisposable = false;
+        this.allwaysDisposable = true;
     }
 
     @Override

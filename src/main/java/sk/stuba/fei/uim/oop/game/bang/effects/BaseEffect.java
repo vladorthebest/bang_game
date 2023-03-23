@@ -6,12 +6,16 @@ public abstract class BaseEffect {
     protected String name;
     protected int priority;
     protected EffectType type;
+    protected boolean disposable;
+    protected boolean allwaysDisposable;
 
     public boolean isDisposable() {
         return disposable;
     }
 
-    protected boolean disposable;
+    public boolean isAllwaysDisposable() {
+        return allwaysDisposable;
+    }
     public boolean use(Player ownerPlayer){
         return false;
     };
@@ -26,6 +30,9 @@ public abstract class BaseEffect {
 
     @Override
     public String toString() {
+        return name;
+    }
+    public String getName(){
         return name;
     }
 }

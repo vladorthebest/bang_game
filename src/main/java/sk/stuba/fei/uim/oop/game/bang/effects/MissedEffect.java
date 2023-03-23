@@ -11,6 +11,7 @@ public class MissedEffect extends BaseEffect{
         this.priority = 2;
         this.type = EffectType.MISS;
         this.disposable = false;
+        this.allwaysDisposable = false;
     }
 
     @Override
