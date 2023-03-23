@@ -5,7 +5,7 @@ import sk.stuba.fei.uim.oop.game.bang.player.Player;
 
 import java.util.Iterator;
 
-public class MissedEffect extends BaseEffect{
+public class MissedEffect extends PassiveEffect{
     {
         this.name = "Miss";
         this.priority = 2;

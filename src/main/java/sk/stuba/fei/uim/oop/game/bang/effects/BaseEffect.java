@@ -6,9 +6,13 @@ public abstract class BaseEffect {
     protected String name;
     protected int priority;
     protected EffectType type;
+    protected boolean isPassive;
     protected boolean disposable;
     protected boolean allwaysDisposable;
 
+    public boolean isPassive() {
+        return isPassive;
+    }
     public boolean isDisposable() {
         return disposable;
     }

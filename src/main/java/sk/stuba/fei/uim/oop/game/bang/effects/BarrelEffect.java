@@ -4,7 +4,7 @@ import sk.stuba.fei.uim.oop.game.bang.player.Player;
 
 import java.util.Random;
 
-public class BarrelEffect extends BaseEffect{
+public class BarrelEffect extends ActiveEffect{
 
     private int chance = 4;
     private Random randomGenerator = new Random();
@@ -20,6 +20,6 @@ public class BarrelEffect extends BaseEffect{
 
     @Override
     public boolean use(Player ownerPlayer) {
-        return (randomGenerator.nextInt(chance) == 1);
+        return (randomGenerator.nextInt(chance) != 1);
     }
 }

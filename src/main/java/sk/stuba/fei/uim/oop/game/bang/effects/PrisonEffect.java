@@ -4,7 +4,7 @@ import sk.stuba.fei.uim.oop.game.bang.player.Player;
 
 import java.util.Random;
 
-public class PrisonEffect extends BaseEffect{
+public class PrisonEffect extends ActiveEffect{
 
     private int chance;
     private Random randomGenerator = new Random();

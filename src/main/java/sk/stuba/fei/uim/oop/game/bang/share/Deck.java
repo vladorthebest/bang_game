@@ -12,6 +12,8 @@ public class Deck {
     private final int COUNT_STAGECOACH = 4; // 4
     private final int COUNT_BARREL = 2; // 2
     private final int COUNT_PRISON = 3; // 3
+    private final int COUNT_CAT_BALOU = 30; // 3
+
     private LinkedList<BaseCard> cards;
     Random randomGenerator = new Random();
     {
@@ -37,6 +39,9 @@ public class Deck {
         }
         for(int i=0; i<COUNT_PRISON; i++){
             cards.add(new PrisonCard());
+        }
+        for(int i=0; i<COUNT_CAT_BALOU; i++){
+            cards.add(new CatBalouCard());
         }
     }
 
