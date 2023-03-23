@@ -3,6 +3,7 @@ package sk.stuba.fei.uim.oop.game.bang.player;
 import sk.stuba.fei.uim.oop.game.bang.cards.EmptyCard;
 import sk.stuba.fei.uim.oop.game.bang.effects.BaseEffect;
 import sk.stuba.fei.uim.oop.game.bang.effects.EffectType;
+import sk.stuba.fei.uim.oop.game.bang.effects.MissedEffect;
 import sk.stuba.fei.uim.oop.game.bang.share.Deck;
 import sk.stuba.fei.uim.oop.game.bang.cards.BaseCard;
 import sk.stuba.fei.uim.oop.game.bang.share.UserInterface;
@@ -35,6 +36,7 @@ public class Player {
         this.hp = 4;
         this.hand = new LinkedList<>();
         this.table = new LinkedList<>();
+        this.table.add(new MissedEffect());
     }
 
 
@@ -85,6 +87,25 @@ public class Player {
         return sb.toString();
     }
 
+    public String getTable(){
+        if (table.isEmpty())
+            return "No Effects";
+        StringBuilder sb = new StringBuilder();
+        int index = 1;
+        for (BaseEffect effect : table) {
+            sb.append(" ");
+            sb.append(table);
+            sb.append(", ");
+        }
+        return sb.toString();
+    }
+
+    public LinkedList<BaseCard> getHandList(){
+        return hand;
+    }
+    public LinkedList<BaseEffect> getTableList(){
+        return table;
+    }
 
     // USE EFFECTS
 
@@ -104,7 +125,7 @@ public class Player {
     public void useStartEffects(){
         for(BaseEffect effect : table){
             if(effect.getType() == EffectType.START){
-                effect.use();
+                effect.use(this);
                 table.remove(effect);
             }
         }
@@ -115,8 +136,9 @@ public class Player {
         for (Iterator<BaseEffect> iterator = table.iterator(); iterator.hasNext(); ) {
             BaseEffect effect = iterator.next();
             if(effect.getType() == EffectType.MISS){
-                isWorked = effect.use();
-                iterator.remove();
+                isWorked = effect.use(this);
+                if(effect.isDisposable())
+                    iterator.remove();
             }
         }
         return isWorked;

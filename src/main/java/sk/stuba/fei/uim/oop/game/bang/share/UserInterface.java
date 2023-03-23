@@ -28,6 +28,9 @@ public class UserInterface {
     public void drawPlayersHand(Player player){
         System.out.println(player.getHand());
     }
+    public void drawPlayersTable(Player player){
+        System.out.println(player.getTable());
+    }
 
     private String buildPlayerBlock(Player player){
         StringBuilder playerBlock = new StringBuilder("");

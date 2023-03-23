@@ -67,6 +67,7 @@ public class Bang {
             player.sortTable();
             player.draw(2);
             ui.drawPlayersHand(player);
+            ui.drawPlayersTable(player);
             player.playCard(players);
             player.discarding();
             player.sortTable();
