@@ -10,6 +10,7 @@ public class Deck {
     private final int COUNT_BANG = 30; // 30
     private final int COUNT_BEER = 8; // 8
     private final int COUNT_STAGECOACH = 4; // 4
+    private final int COUNT_BARREL = 30; // 2
 
     private LinkedList<BaseCard> cards;
     Random randomGenerator = new Random();
@@ -30,6 +31,9 @@ public class Deck {
         }
         for(int i=0; i<COUNT_STAGECOACH; i++){
             cards.add(new StagecoachCard());
+        }
+        for(int i=0; i<COUNT_BARREL; i++){
+            cards.add(new BarrelCard());
         }
     }
 

@@ -13,7 +13,7 @@ public class BangCard extends TargetCard{
     public void use(Player usingPlayer) {
         Player targetPlayer = super.targeting(usingPlayer);
 
-        if (!targetPlayer.useMissing()){
+        if (!targetPlayer.useMissingEffects()){
             targetPlayer.damageHP(1);
         }
     }

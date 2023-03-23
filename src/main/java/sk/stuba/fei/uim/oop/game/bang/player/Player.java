@@ -9,6 +9,7 @@ import sk.stuba.fei.uim.oop.game.bang.share.UserInterface;
 
 import java.text.Collator;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -87,6 +88,10 @@ public class Player {
 
     // USE EFFECTS
 
+    public boolean addEffect(BaseEffect effect){
+        table.add(effect);
+        return true;
+    }
     public void sortTable(){
         table.sort( new Comparator<BaseEffect>(){
             @Override
@@ -105,12 +110,13 @@ public class Player {
         }
     }
 
-    public boolean useMissing(){
+    public boolean useMissingEffects(){
         boolean isWorked = false;
-        for(BaseEffect effect : table){
+        for (Iterator<BaseEffect> iterator = table.iterator(); iterator.hasNext(); ) {
+            BaseEffect effect = iterator.next();
             if(effect.getType() == EffectType.MISS){
                 isWorked = effect.use();
-                table.remove(effect);
+                iterator.remove();
             }
         }
         return isWorked;
