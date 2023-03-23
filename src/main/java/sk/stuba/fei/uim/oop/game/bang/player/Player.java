@@ -14,29 +14,23 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Player {
+public class Player extends BasePlayer{
 
     // ARGUMENTS
-
     private UserInterface ui;
-    private StringBuilder nickname;
     Scanner in = new Scanner(System.in);
-    private int hp;
-    private boolean isDead = false;
-    // Hand with cards
-    private LinkedList<BaseCard> hand;
-    private LinkedList<BaseEffect> table;
     private Deck deck;
 
 
     // CONSTRUCTOR
     public Player(String nickname, UserInterface ui){
+        super(nickname);
         this.ui = ui;
-        this.nickname = new StringBuilder(nickname);
-        this.hp = 4;
-        this.hand = new LinkedList<>();
-        this.table = new LinkedList<>();
-        this.table.add(new MissedEffect());
+    }
+
+    public Player(UserInterface ui){
+        super("Anonymous");
+        this.ui = ui;
     }
 
 
@@ -58,53 +52,6 @@ public class Player {
         for (int i = hand.size(); i > this.hp; i--) {
             hand.remove();
         }
-    }
-
-
-    // GET
-    public String getNickname() {
-        return nickname.toString();
-    }
-
-    public boolean isDead() {
-        if(this.hp == 0){
-            this.isDead = true;
-        }
-        return isDead;
-    }
-
-    public String getHand(){
-        if (hand.isEmpty())
-            return "No cards";
-        StringBuilder sb = new StringBuilder();
-        int index = 1;
-        for (BaseCard card : hand) {
-            sb.append(index++);
-            sb.append(" ");
-            sb.append(card);
-            sb.append(", ");
-        }
-        return sb.toString();
-    }
-
-    public String getTable(){
-        if (table.isEmpty())
-            return "No Effects";
-        StringBuilder sb = new StringBuilder();
-        int index = 1;
-        for (BaseEffect effect : table) {
-            sb.append(" ");
-            sb.append(table);
-            sb.append(", ");
-        }
-        return sb.toString();
-    }
-
-    public LinkedList<BaseCard> getHandList(){
-        return hand;
-    }
-    public LinkedList<BaseEffect> getTableList(){
-        return table;
     }
 
     // USE EFFECTS
@@ -137,24 +84,13 @@ public class Player {
             BaseEffect effect = iterator.next();
             if(effect.getType() == EffectType.MISS){
                 isWorked = effect.use(this);
-                if(effect.isDisposable())
+                if(effect.isDisposable() && isWorked)
                     iterator.remove();
+                if (isWorked)
+                    break;
             }
         }
         return isWorked;
-    }
-
-    // HP
-    public void damageHP(int dmg){
-        this.hp -= dmg;
-    }
-
-    public void addHP(int hp){
-        this.hp += hp;
-    }
-
-    public int getHP(){
-        return this.hp;
     }
 
     // PLAY CARD
@@ -170,6 +106,7 @@ public class Player {
             card.use(this);
 
             ui.drawPlayersHand(this);
+            ui.drawPlayersTable(this);
 
         }
     }
