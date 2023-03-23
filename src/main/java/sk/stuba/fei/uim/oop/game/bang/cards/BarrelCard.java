@@ -14,6 +14,8 @@ public class BarrelCard extends NoneTargetCard{
     }
     @Override
     public void use(Player usingPlayer) {
-        usingPlayer.addEffect(effect);
+        if (!usingPlayer.addEffect(effect)){
+            usingPlayer.addCard(this);
+        }
     }
 }

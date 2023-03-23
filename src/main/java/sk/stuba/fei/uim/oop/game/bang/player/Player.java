@@ -57,9 +57,16 @@ public class Player extends BasePlayer{
     // USE EFFECTS
 
     public boolean addEffect(BaseEffect effect){
+        for(BaseEffect alreadyEffect: table){
+            if(alreadyEffect.toString() == effect.toString()){
+                return false;
+            }
+        }
         table.add(effect);
         return true;
     }
+
+
     public void sortTable(){
         table.sort( new Comparator<BaseEffect>(){
             @Override
