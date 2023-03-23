@@ -18,7 +18,7 @@ public class Bang {
         int lenPlayers = in.nextInt();
         for(int i=0; i<lenPlayers; i++){
             System.out.println("Nickname for player " + (i+1));
-            players.add(new Player(in.next(), ui));
+            players.add(new Player(in.next(), ui, players));
         }
         ui.addPlayers(players);
 
@@ -28,10 +28,10 @@ public class Bang {
         // Game
         deck = new Deck();
 
-            for(Player player : players){
-                player.initDraw(deck);
-                System.out.println( player.getNickname() + player.getHand());
-            }
+        for(Player player : players){
+            player.initDraw(deck);
+            System.out.println( player.getNickname() + player.getHand());
+        }
         while (checkPlayersHP()){
             for(Player player : players){
                 if(!player.isDead())
@@ -73,7 +73,7 @@ public class Bang {
             player.draw(2);
             ui.drawPlayersHand(player);
             ui.drawPlayersTable(player);
-            player.playCard(players);
+            player.playCard();
             player.discarding();
             player.sortTable();
         }

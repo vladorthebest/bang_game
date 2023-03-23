@@ -18,14 +18,16 @@ public class Player extends BasePlayer{
 
     // ARGUMENTS
     private UserInterface ui;
+    LinkedList<Player> players;
     Scanner in = new Scanner(System.in);
     private Deck deck;
 
 
     // CONSTRUCTOR
-    public Player(String nickname, UserInterface ui){
+    public Player(String nickname, UserInterface ui, LinkedList<Player> players){
         super(nickname);
         this.ui = ui;
+        this.players = players;
     }
 
     public Player(UserInterface ui){
@@ -108,7 +110,7 @@ public class Player extends BasePlayer{
     }
 
     // PLAY CARD
-    public void playCard(LinkedList<Player> players){
+    public void playCard(){
         BaseCard card;
         Player player;
         while (true){
@@ -152,4 +154,7 @@ public class Player extends BasePlayer{
         return ui.choiseTarget();
     }
 
+    public LinkedList<Player> getPlayers() {
+        return players;
+    }
 }
