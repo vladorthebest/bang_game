@@ -64,16 +64,18 @@ public class Bang {
     private  void turn(Player player){
         if(!player.isDead()){
             ui.drawStartTurn();
-            ui.drawOwnerTurn(player);
+            player.getUiPlayer().drawOwnerTurn();
             player.sortTable();
             if(!player.useStartEffects()){
                 System.out.println("Skip turn");
                 return;
             }
             player.draw(2);
-            ui.drawPlayersHand(player);
-            ui.drawPlayersTable(player);
+
+            player.getUiPlayer().drawPlayersHand();
+            player.getUiPlayer().drawPlayersTable();
             player.playCard();
+
             player.discarding();
             player.sortTable();
         }

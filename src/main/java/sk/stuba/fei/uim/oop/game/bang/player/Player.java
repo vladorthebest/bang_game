@@ -19,6 +19,7 @@ public class Player extends BasePlayer{
     // ARGUMENTS
     private UserInterface ui;
     LinkedList<Player> players;
+    private PlayerInterface uiPlayer;
     Scanner in = new Scanner(System.in);
     private Deck deck;
 
@@ -26,15 +27,20 @@ public class Player extends BasePlayer{
     // CONSTRUCTOR
     public Player(String nickname, UserInterface ui, LinkedList<Player> players){
         super(nickname);
+        this.uiPlayer = new PlayerInterface(this);
         this.ui = ui;
         this.players = players;
     }
 
     public Player(UserInterface ui){
         super("Anonymous");
+        this.uiPlayer = new PlayerInterface(this);
         this.ui = ui;
     }
 
+    public PlayerInterface getUiPlayer() {
+        return uiPlayer;
+    }
 
     // DRAW
     public void draw (int count){
@@ -114,15 +120,15 @@ public class Player extends BasePlayer{
         BaseCard card;
         Player player;
         while (true){
-            ui.drawPlayer(this);
+            uiPlayer.drawPlayer();
             card = this.choiseCard();
             if(card == null){
                 break;
             }
             card.use(this);
 
-            ui.drawPlayersHand(this);
-            ui.drawPlayersTable(this);
+            uiPlayer.drawPlayersHand();
+            uiPlayer.drawPlayersTable();
 
         }
     }
