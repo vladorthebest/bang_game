@@ -22,14 +22,13 @@ public class UserInterface {
         while (true) {
             int indexPlayer = in.readInt("Input index target player: ") - 1;
             if (indexPlayer < 0) {
-                break;
+                System.out.println("Invalid index");
             } else if (indexPlayer >= players.size()) {
                 System.out.println("Invalid index");
             } else {
                 return players.get(indexPlayer);
             }
         }
-        return null;
     }
 
     public void drawWinner(Player player) {

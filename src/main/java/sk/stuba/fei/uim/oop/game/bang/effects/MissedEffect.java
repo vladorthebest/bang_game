@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 public class MissedEffect extends PassiveEffect{
     {
-        this.name = "Miss";
+        this.name = "";
         this.priority = 2;
         this.type = EffectType.MISS;
         this.disposable = false;

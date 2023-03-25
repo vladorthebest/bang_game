@@ -50,7 +50,7 @@ public class Player extends BasePlayer{
         }
     }
 
-    public void initDraw (Deck deck){
+    public void draw (Deck deck, int count){
         this.deck = deck;
         for (int i = 0; i < this.hp; i++) {
             hand.add(deck.draw());

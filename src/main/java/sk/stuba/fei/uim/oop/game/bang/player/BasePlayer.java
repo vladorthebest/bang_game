@@ -42,7 +42,7 @@ public abstract class BasePlayer {
             sb.append(index++);
             sb.append(" ");
             sb.append(card);
-            sb.append(", ");
+            sb.append(" ");
         }
         return sb.toString();
     }
@@ -54,8 +54,8 @@ public abstract class BasePlayer {
         int index = 1;
         for (BaseEffect effect : table) {
             sb.append(" ");
-            sb.append(effect);
-            sb.append(", ");
+            if(!effect.toString().isEmpty())
+                sb.append(effect);
         }
         return sb.toString();
     }

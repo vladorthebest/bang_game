@@ -1,11 +1,14 @@
 package sk.stuba.fei.uim.oop.game.bang;
 
+import sk.stuba.fei.uim.oop.game.bang.effects.BaseEffect;
+import sk.stuba.fei.uim.oop.game.bang.effects.EffectType;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 import sk.stuba.fei.uim.oop.game.bang.share.Deck;
 import sk.stuba.fei.uim.oop.game.bang.share.UserInterface;
 import sk.stuba.fei.uim.oop.utility.KeyboardInput;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -35,9 +38,13 @@ public class Bang {
         deck = new Deck();
 
         for(Player player : players){
-            player.initDraw(deck);
+            player.draw(deck, player.getHP());
         }
         while (checkPlayersHP()){
+            for (Iterator<Player> playerIterator = players.iterator(); playerIterator.hasNext(); ) {
+                if(playerIterator.next().isDead())
+                    playerIterator.remove();
+            }
             for(Player player : players){
                 if(!player.isDead())
                     this.turn(player);
@@ -81,9 +88,10 @@ public class Bang {
             player.getUiPlayer().drawPlayersTable();
 
             player.playCard();
-
-            player.discarding();
-            player.sortTable();
+            if(!player.isDead()) {
+                player.discarding();
+                player.sortTable();
+            }
         }
     }
 

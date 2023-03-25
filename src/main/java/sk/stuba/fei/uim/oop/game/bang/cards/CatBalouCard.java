@@ -63,7 +63,7 @@ public class CatBalouCard extends TargetCard{
         hand.remove(index);
     }
     private void discardingEffect(LinkedList<BaseEffect> table){
-        int index = randomGenerator.nextInt(table.size()-1);
+        int index = randomGenerator.nextInt(table.size());
         table.remove(index);
     }
 }
