@@ -15,6 +15,8 @@ public class Deck {
     private final int COUNT_CAT_BALOU = 3; // 3
     private final int COUNT_INDIANS = 3; // 3
 
+    private final int COUNT_DYNAMITE = 30; // 3
+
     private LinkedList<BaseCard> cards;
     Random randomGenerator = new Random();
     {
@@ -24,6 +26,9 @@ public class Deck {
     public Deck(){
         for(int i=0; i<COUNT_MISSED; i++){
             cards.add(new MissedCard());
+        }
+        for(int i=0; i<COUNT_DYNAMITE; i++){
+            cards.add(new DynamiteCard());
         }
 
         for(int i=0; i<COUNT_BANG; i++){

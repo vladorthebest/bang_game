@@ -11,9 +11,9 @@ public class PrisonEffect extends ActiveEffect{
 
 
     {
-        this.chance = 8;
+        this.chance = 4;
         this.name = "Prison";
-        this.priority = 1;
+        this.priority = 2;
         this.type = EffectType.START;
         this.disposable = true;
         this.allwaysDisposable = true;

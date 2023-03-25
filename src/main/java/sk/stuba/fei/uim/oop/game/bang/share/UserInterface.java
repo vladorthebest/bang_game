@@ -1,5 +1,6 @@
 package sk.stuba.fei.uim.oop.game.bang.share;
 
+import sk.stuba.fei.uim.oop.game.bang.effects.BaseEffect;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
@@ -39,7 +40,7 @@ public class UserInterface {
     public void drawPlayers(){
         int i=1;
         for(Player player: players){
-            System.out.printf("Player%d: %s  HP: %d\n", i, player.getNickname(), player.getHP());
+            System.out.printf("Player%d: %s  HP: %d  Table: %s \n", i, player.getNickname(), player.getHP(), player.getTable());
             i++;
         }
     }
