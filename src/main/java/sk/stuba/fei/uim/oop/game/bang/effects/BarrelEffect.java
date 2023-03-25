@@ -8,13 +8,14 @@ import java.util.Random;
 
 public class BarrelEffect extends ActiveEffect {
 
-    private int chance = 4;
+    private int chance;
     private Random randomGenerator = new Random();
 
 
     {
         this.name = "Barrel";
         this.priority = 1;
+        this.chance = 4;
         this.type = EffectType.MISS;
         this.disposable = true;
         this.allwaysDisposable = false;

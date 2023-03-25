@@ -13,15 +13,14 @@ public class Deck {
     private final int COUNT_STAGECOACH = 4; // 4
     private final int COUNT_BARREL = 2; // 2
     private final int COUNT_PRISON = 3; // 3
-    private final int COUNT_CAT_BALOU = 3; // 3
-    private final int COUNT_INDIANS = 3; // 3
-
-    private final int COUNT_DYNAMITE = 30; // 3
+    private final int COUNT_CAT_BALOU = 6; // 6
+    private final int COUNT_INDIANS = 2; // 2
+    private final int COUNT_DYNAMITE = 1; // 1
 
     private LinkedList<BaseCard> cards;
     Random randomGenerator = new Random();
     {
-        cards = new LinkedList<BaseCard>();
+        cards = new LinkedList<>();
     }
 
     public Deck(){

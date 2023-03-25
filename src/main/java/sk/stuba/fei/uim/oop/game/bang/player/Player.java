@@ -18,7 +18,6 @@ public class Player extends BasePlayer {
     private UserInterface ui;
     LinkedList<Player> players;
     private PlayerInterface uiPlayer;
-    ZKlavesnice in = new ZKlavesnice();
     private Deck deck;
 
 
@@ -49,7 +48,7 @@ public class Player extends BasePlayer {
 
     public void draw (Deck deck, int count){
         this.deck = deck;
-        for (int i = 0; i < this.hp; i++) {
+        for (int i = 0; i < count; i++) {
             hand.add(deck.draw());
         }
     }
@@ -64,7 +63,7 @@ public class Player extends BasePlayer {
 
     public boolean addEffect(BaseEffect effect){
         for(BaseEffect alreadyEffect: table){
-            if(alreadyEffect.toString() == effect.toString()){
+            if(alreadyEffect.toString().equals(effect.toString())){
                 return false;
             }
         }
@@ -74,16 +73,11 @@ public class Player extends BasePlayer {
 
 
     public void sortTable(){
-        table.sort( new Comparator<BaseEffect>(){
-            @Override
-            public int compare(BaseEffect a,BaseEffect b){
-                return b.getPriority() - a.getPriority();
-            }
-        });
+        table.sort((a, b) -> b.getPriority() - a.getPriority());
     }
 
     public boolean useStartEffects(){
-        boolean isWorked = false;
+        boolean isWorked;
         for (Iterator<BaseEffect> iterator = table.iterator(); iterator.hasNext(); ) {
             BaseEffect effect = iterator.next();
             if(effect.getType() == EffectType.START){
@@ -91,7 +85,7 @@ public class Player extends BasePlayer {
                 if( (effect.isDisposable() && isWorked) || effect.isAllwaysDisposable())
                     iterator.remove();
 
-                if(this.isDead() || (effect.getName() == "Prison" && isWorked == true))
+                if(this.isDead() || (effect.getName().equals("Prison") && isWorked))
                     return false;
             }
         }
@@ -116,7 +110,6 @@ public class Player extends BasePlayer {
     // PLAY CARD
     public void playCard(){
         BaseCard card;
-        Player player;
         while (true){
             uiPlayer.drawPlayer();
             card = this.choiseCard();
@@ -132,10 +125,10 @@ public class Player extends BasePlayer {
     }
 
     private BaseCard choiseCard(){
-        int indexCard = -1;
+        int indexCard;
         BaseCard card;
         while (true){
-            indexCard = in.readInt("Input index card: ") - 1;
+            indexCard = ZKlavesnice.readInt("Input index card: ") - 1;
             if(indexCard < 0){
                 break;
             }else if(indexCard >= hand.size()){

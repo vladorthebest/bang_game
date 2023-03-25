@@ -13,7 +13,6 @@ import java.util.Random;
 
 public class CatBalouCard extends TargetCard {
     private Random randomGenerator = new Random();
-    ZKlavesnice in = new ZKlavesnice();
 
     {
         this.name = "Cat Balou";
@@ -25,7 +24,6 @@ public class CatBalouCard extends TargetCard {
         Player targetPlayer = super.targeting(usingPlayer);
         LinkedList<BaseEffect> buf = new LinkedList<>();
         LinkedList<BaseEffect> targetTable = targetPlayer.getTableList();
-        LinkedList<BaseCard> targetHand = targetPlayer.getHandList();
 
         for (Iterator<BaseEffect> iterator = targetTable.iterator(); iterator.hasNext(); ) {
             BaseEffect effect = iterator.next();
@@ -36,22 +34,27 @@ public class CatBalouCard extends TargetCard {
         }
 
 
-        checkTableHand(targetPlayer);
+        if (!checkTableHand(targetPlayer)){
+            usingPlayer.addCard(this);
+        }
         targetTable.addAll(buf);
 
     }
-    private void checkTableHand(Player targetPlayer){
+    private boolean checkTableHand(Player targetPlayer){
         LinkedList<BaseEffect> targetTable = targetPlayer.getTableList();
         LinkedList<BaseCard> targetHand = targetPlayer.getHandList();
 
-        if (targetHand.isEmpty()){
+        if(targetHand.isEmpty() && targetTable.isEmpty()){
+            System.out.println("Hand and Table are empty");
+            return false;
+        }else if (targetHand.isEmpty()){
             System.out.println("Hand is empty");
             discardingEffect(targetTable);
         } else if (targetTable.isEmpty()) {
             System.out.println("Table is empty");
             discardingCard(targetHand);
         } else {
-            switch (in.readInt("Choise: \n 1) Hand 2) Table")){
+            switch (ZKlavesnice.readInt("Choise: \n 1) Hand 2) Table")){
                 case 1:
                     discardingCard(targetHand);
                     break;
@@ -60,6 +63,7 @@ public class CatBalouCard extends TargetCard {
                     break;
             }
         }
+        return true;
     }
     private void discardingCard(LinkedList<BaseCard> hand){
         int index = randomGenerator.nextInt(hand.size()-1);

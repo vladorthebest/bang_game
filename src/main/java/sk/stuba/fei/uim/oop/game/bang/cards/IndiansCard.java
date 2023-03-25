@@ -16,20 +16,24 @@ public class IndiansCard extends NoneTargetCard {
     @Override
     public void use(Player usingPlayer) {
         LinkedList<BaseCard> hand;
-        boolean removed = false;
+        boolean remove = false;
+        int i;
         for(Player player: usingPlayer.getPlayers()){
             if (player != usingPlayer) {
                 hand = player.getHandList();
 
-                for (int i=0; i<hand.size(); i++){
+                for (i=0; i<hand.size(); i++){
 
-                    if (hand.get(i).getName() == "BANG!"){
-                        hand.remove(i);
-                        removed = true;
+                    if (hand.get(i).getName().equals("BANG!")){
+                        remove = true;
                     }
                 }
-                if (!removed)
+                if (!remove){
                     player.damageHP(1);
+                } else {
+                    hand.remove(i-1);
+                }
+
 
             }
         }

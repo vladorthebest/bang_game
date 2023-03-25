@@ -23,7 +23,7 @@ public abstract class BaseEffect {
     }
     public boolean use(Player ownerPlayer){
         return false;
-    };
+    }
 
     public EffectType getType() {
         return type;

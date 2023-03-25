@@ -8,7 +8,6 @@ import java.util.LinkedList;
 public class UserInterface {
 
     LinkedList<Player> players;
-    ZKlavesnice in = new ZKlavesnice();
 
     public void addPlayers(LinkedList<Player> players){
         this.players = players;
@@ -20,7 +19,7 @@ public class UserInterface {
 
     public Player choiseTarget() {
         while (true) {
-            int indexPlayer = in.readInt("Input index target player: ") - 1;
+            int indexPlayer = ZKlavesnice.readInt("Input index target player: ") - 1;
             if (indexPlayer < 0) {
                 System.out.println("Invalid index");
             } else if (indexPlayer >= players.size()) {

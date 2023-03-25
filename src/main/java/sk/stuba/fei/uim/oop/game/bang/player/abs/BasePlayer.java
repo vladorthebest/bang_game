@@ -50,7 +50,6 @@ public abstract class BasePlayer {
         if (table.isEmpty())
             return "No Effects";
         StringBuilder sb = new StringBuilder();
-        int index = 1;
         for (BaseEffect effect : table) {
             sb.append(" ");
             if(!effect.toString().isEmpty())

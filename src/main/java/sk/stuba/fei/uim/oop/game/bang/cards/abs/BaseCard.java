@@ -6,9 +6,9 @@ import sk.stuba.fei.uim.oop.game.bang.player.Player;
 public abstract class BaseCard {
     protected String name;
     protected Color type;
-    private final String ANSI_RESET = "\u001B[0m";
+    final String ANSI_RESET = "\u001B[0m";
 
-    public void use(Player usingPlayer) {}; // Target
+    public void use(Player usingPlayer) {} // Target
     public String toString(){
         return this.type.get() + this.name + ANSI_RESET;
     }
