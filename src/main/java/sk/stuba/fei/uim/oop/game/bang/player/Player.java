@@ -127,7 +127,7 @@ public class Player extends BasePlayer{
                 break;
             }
             card.use(this);
-
+            ui.drawPlayers();
             uiPlayer.drawPlayersHand();
             uiPlayer.drawPlayersTable();
 

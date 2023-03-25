@@ -4,7 +4,6 @@ import sk.stuba.fei.uim.oop.game.bang.player.Player;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.LinkedList;
-import java.util.Scanner;
 
 public class UserInterface {
 
@@ -16,12 +15,8 @@ public class UserInterface {
     }
 
     public void drawStartTurn(){
-        System.out.println("=======================================================");
+        System.out.println("=======================================================================================================================");
     }
-
-
-
-
 
     public Player choiseTarget() {
         while (true) {
@@ -38,7 +33,15 @@ public class UserInterface {
     }
 
     public void drawWinner(Player player) {
-        System.out.println("Winner: " + player.getNickname());
+        System.out.println("\u001b[33;1m" + "Winner: " + player.getNickname() + "\u001b[0m");
 
+    }
+
+    public void drawPlayers(){
+        int i=1;
+        for(Player player: players){
+            System.out.printf("Player%d: %s  HP: %d\n", i, player.getNickname(), player.getHP());
+            i++;
+        }
     }
 }

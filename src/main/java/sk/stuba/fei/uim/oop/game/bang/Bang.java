@@ -36,7 +36,6 @@ public class Bang {
 
         for(Player player : players){
             player.initDraw(deck);
-            System.out.println( player.getNickname() + player.getHand());
         }
         while (checkPlayersHP()){
             for(Player player : players){
@@ -77,9 +76,10 @@ public class Bang {
                 return;
             }
             player.draw(2);
-
+            ui.drawPlayers();
             player.getUiPlayer().drawPlayersHand();
             player.getUiPlayer().drawPlayersTable();
+
             player.playCard();
 
             player.discarding();

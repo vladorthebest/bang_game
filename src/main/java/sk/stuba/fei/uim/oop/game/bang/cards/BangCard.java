@@ -17,4 +17,9 @@ public class BangCard extends TargetCard{
             targetPlayer.damageHP(1);
         }
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
