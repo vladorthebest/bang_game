@@ -8,7 +8,7 @@ public abstract class BaseCard {
     protected Color type;
     final String ANSI_RESET = "\u001B[0m";
 
-    public void use(Player usingPlayer) {} // Target
+    public void use(Player usingPlayer) {}
     public String toString(){
         return this.type.get() + this.name + ANSI_RESET;
     }

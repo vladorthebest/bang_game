@@ -12,6 +12,7 @@ import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Player extends BasePlayer {
 
@@ -21,6 +22,7 @@ public class Player extends BasePlayer {
     private PlayerInterface uiPlayer;
     private Deck deck;
     private ResetDeck resetDeck;
+    Random randomGenerator = new Random();
 
     // CONSTRUCTOR
     public Player(String nickname, UserInterface ui, LinkedList<Player> players){
@@ -36,10 +38,10 @@ public class Player extends BasePlayer {
         this.ui = ui;
     }
 
+
     public PlayerInterface getUiPlayer() {
         return uiPlayer;
     }
-
     // DRAW
     public void draw (int count){
         BaseCard card;
@@ -76,9 +78,11 @@ public class Player extends BasePlayer {
     }
 
     public void discarding(){
+        int index;
         for (int i = hand.size(); i > this.hp; i--) {
-            resetDeck.addCard(hand.getLast());
-            hand.removeLast();
+            index = randomGenerator.nextInt(hand.size());
+            resetDeck.addCard(hand.get(index));
+            hand.remove(index);
         }
     }
 

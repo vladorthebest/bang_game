@@ -8,5 +8,5 @@ public abstract class TargetCard extends BaseCard {
     protected Player targeting(Player usingPlayer) {
         return usingPlayer.choiseTarget();
 
-    } // Targeting
+    }
 }
