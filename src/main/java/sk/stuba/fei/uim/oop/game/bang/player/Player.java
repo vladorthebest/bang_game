@@ -8,7 +8,6 @@ import sk.stuba.fei.uim.oop.game.bang.cards.abs.BaseCard;
 import sk.stuba.fei.uim.oop.game.bang.share.UserInterface;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -41,14 +40,26 @@ public class Player extends BasePlayer {
 
     // DRAW
     public void draw (int count){
+        BaseCard card;
         for (int i = 0; i < count; i++) {
-            hand.add(this.deck.draw());
+            card = deck.draw();
+            if(card == null){
+                System.out.println("Deck is empty");
+                return;
+            }
+            hand.add(deck.draw());
         }
     }
 
     public void draw (Deck deck, int count){
         this.deck = deck;
+        BaseCard card;
         for (int i = 0; i < count; i++) {
+            card = deck.draw();
+            if(card == null){
+                System.out.println("Deck is empty");
+                return;
+            }
             hand.add(deck.draw());
         }
     }

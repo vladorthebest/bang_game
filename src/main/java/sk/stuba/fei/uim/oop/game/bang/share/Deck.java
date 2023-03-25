@@ -56,6 +56,9 @@ public class Deck {
 
     public BaseCard draw(){
         int len = cards.size();
+        if(len == 0){
+            return null;
+        }
         int randomInt = randomGenerator.nextInt(len);
         BaseCard card = cards.get(randomInt);
         cards.remove(randomInt);
