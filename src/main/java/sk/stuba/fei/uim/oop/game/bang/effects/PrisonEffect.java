@@ -1,5 +1,7 @@
 package sk.stuba.fei.uim.oop.game.bang.effects;
 
+import sk.stuba.fei.uim.oop.game.bang.cards.BarrelCard;
+import sk.stuba.fei.uim.oop.game.bang.cards.PrisonCard;
 import sk.stuba.fei.uim.oop.game.bang.effects.abs.ActiveEffect;
 import sk.stuba.fei.uim.oop.game.bang.effects.types.EffectType;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
@@ -23,6 +25,7 @@ public class PrisonEffect extends ActiveEffect {
 
     @Override
     public boolean use(Player ownerPlayer) {
+        ownerPlayer.getResetDeck().addCard(new PrisonCard());
         return (randomGenerator.nextInt(chance) == 1);
     }
 }

@@ -54,6 +54,10 @@ public class Deck {
         }
     }
 
+    public LinkedList<BaseCard> getCards() {
+        return cards;
+    }
+
     public BaseCard draw(){
         int len = cards.size();
         if(len == 0){
@@ -63,5 +67,14 @@ public class Deck {
         BaseCard card = cards.get(randomInt);
         cards.remove(randomInt);
         return card;
+    }
+
+    @Override
+    public String toString() {
+        String str="Deck: ";
+        for(BaseCard card: cards){
+            str += (card.toString() + " ");
+        }
+        return str;
     }
 }

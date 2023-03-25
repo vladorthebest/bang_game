@@ -1,5 +1,6 @@
 package sk.stuba.fei.uim.oop.game.bang.effects;
 
+import sk.stuba.fei.uim.oop.game.bang.cards.DynamiteCard;
 import sk.stuba.fei.uim.oop.game.bang.effects.abs.ActiveEffect;
 import sk.stuba.fei.uim.oop.game.bang.effects.types.EffectType;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
@@ -29,6 +30,7 @@ public class DynamiteEffect extends ActiveEffect {
         Player player;
         if(randomGenerator.nextInt(chance) == 1){
             usingPlayer.damageHP(3);
+            usingPlayer.getResetDeck().addCard(new DynamiteCard());
             return true;
         }
         for(int i=0; i<players.size(); i++){

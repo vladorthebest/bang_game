@@ -23,6 +23,7 @@ public class MissedEffect extends PassiveEffect {
             BaseCard card = iterator.next();
 
             if(card.getName().equals("Missed")){
+                ownerPlayer.getResetDeck().addCard(card);
                 iterator.remove();
                 return true;
             }

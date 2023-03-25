@@ -3,6 +3,7 @@ package sk.stuba.fei.uim.oop.game.bang;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 import sk.stuba.fei.uim.oop.game.bang.player.abs.BasePlayer;
 import sk.stuba.fei.uim.oop.game.bang.share.Deck;
+import sk.stuba.fei.uim.oop.game.bang.share.ResetDeck;
 import sk.stuba.fei.uim.oop.game.bang.share.UserInterface;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
@@ -13,6 +14,7 @@ public class Bang {
     LinkedList<Player> players = new LinkedList<>();
     UserInterface ui = new UserInterface();
     Deck deck;
+    ResetDeck resetDeck;
     public Bang(){
         int lenPlayers;
         do{
@@ -31,9 +33,10 @@ public class Bang {
     public void start() {
         // Game
         deck = new Deck();
+        resetDeck = new ResetDeck();
 
         for(Player player : players){
-            player.draw(deck, player.getHP());
+            player.draw(deck, player.getHP(), resetDeck);
         }
         while (checkPlayersHP()){
             players.removeIf(BasePlayer::isDead);

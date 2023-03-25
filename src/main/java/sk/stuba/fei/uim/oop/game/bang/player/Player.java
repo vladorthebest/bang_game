@@ -1,10 +1,12 @@
 package sk.stuba.fei.uim.oop.game.bang.player;
 
+import sk.stuba.fei.uim.oop.game.bang.cards.types.Color;
 import sk.stuba.fei.uim.oop.game.bang.effects.abs.BaseEffect;
 import sk.stuba.fei.uim.oop.game.bang.effects.types.EffectType;
 import sk.stuba.fei.uim.oop.game.bang.player.abs.BasePlayer;
 import sk.stuba.fei.uim.oop.game.bang.share.Deck;
 import sk.stuba.fei.uim.oop.game.bang.cards.abs.BaseCard;
+import sk.stuba.fei.uim.oop.game.bang.share.ResetDeck;
 import sk.stuba.fei.uim.oop.game.bang.share.UserInterface;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
@@ -18,7 +20,7 @@ public class Player extends BasePlayer {
     LinkedList<Player> players;
     private PlayerInterface uiPlayer;
     private Deck deck;
-
+    private ResetDeck resetDeck;
 
     // CONSTRUCTOR
     public Player(String nickname, UserInterface ui, LinkedList<Player> players){
@@ -43,30 +45,40 @@ public class Player extends BasePlayer {
         BaseCard card;
         for (int i = 0; i < count; i++) {
             card = deck.draw();
+            System.out.println(card);
             if(card == null){
-                System.out.println("Deck is empty");
-                return;
+
+                deck.getCards().addAll(resetDeck.getCards());
+                System.out.println(deck.toString());
+                card = deck.draw();
             }
-            hand.add(deck.draw());
+            hand.add(card);
         }
     }
 
-    public void draw (Deck deck, int count){
+    public void draw (Deck deck, int count, ResetDeck resetDeck){
         this.deck = deck;
+        this.resetDeck = resetDeck;
         BaseCard card;
         for (int i = 0; i < count; i++) {
             card = deck.draw();
             if(card == null){
                 System.out.println("Deck is empty");
-                return;
+                deck.getCards().addAll(resetDeck.getCards());
+                card = deck.draw();
             }
-            hand.add(deck.draw());
+            hand.add(card);
         }
+    }
+
+    public ResetDeck getResetDeck() {
+        return resetDeck;
     }
 
     public void discarding(){
         for (int i = hand.size(); i > this.hp; i--) {
-            hand.remove();
+            resetDeck.addCard(hand.getLast());
+            hand.removeLast();
         }
     }
 
@@ -109,8 +121,9 @@ public class Player extends BasePlayer {
             BaseEffect effect = iterator.next();
             if(effect.getType() == EffectType.MISS){
                 isWorked = effect.use(this);
-                if(effect.isDisposable() && isWorked)
+                if(effect.isDisposable() && isWorked){
                     iterator.remove();
+                }
                 if (isWorked)
                     break;
             }
@@ -146,6 +159,8 @@ public class Player extends BasePlayer {
                 System.out.println("Invalid index");
             }else {
                 card = this.hand.get(indexCard);
+                if(card.getType() == Color.BROWN)
+                    resetDeck.addCard(hand.get(indexCard));
                 this.hand.remove(indexCard);
                 return card;
             }

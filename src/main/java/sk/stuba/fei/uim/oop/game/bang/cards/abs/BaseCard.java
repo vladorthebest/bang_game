@@ -16,4 +16,8 @@ public abstract class BaseCard {
     public String getName(){
         return name;
     }
+
+    public Color getType() {
+        return type;
+    }
 }

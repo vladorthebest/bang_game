@@ -1,5 +1,6 @@
 package sk.stuba.fei.uim.oop.game.bang.effects;
 
+import sk.stuba.fei.uim.oop.game.bang.cards.BarrelCard;
 import sk.stuba.fei.uim.oop.game.bang.effects.abs.ActiveEffect;
 import sk.stuba.fei.uim.oop.game.bang.effects.types.EffectType;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
@@ -23,6 +24,8 @@ public class BarrelEffect extends ActiveEffect {
 
     @Override
     public boolean use(Player ownerPlayer) {
-        return (randomGenerator.nextInt(chance) != 1);
+        if(randomGenerator.nextInt(chance) == 1)
+            ownerPlayer.getResetDeck().addCard(new BarrelCard());
+        return (randomGenerator.nextInt(chance) == 1);
     }
 }
