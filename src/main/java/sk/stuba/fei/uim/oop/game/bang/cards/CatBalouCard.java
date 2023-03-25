@@ -35,8 +35,10 @@ public class CatBalouCard extends TargetCard {
 
 
         if (!checkTableHand(targetPlayer)){
+            System.out.println("You cant use this card");
             usingPlayer.addCard(this);
         }
+
         targetTable.addAll(buf);
 
     }

@@ -18,6 +18,7 @@ public class PrisonCard extends TargetCard {
     public void use(Player usingPlayer) {
         Player targetPlayer = super.targeting(usingPlayer);
         if (!targetPlayer.addEffect(effect)){
+            System.out.println("You cant use this card on this target");
             usingPlayer.addCard(this);
         }
     }

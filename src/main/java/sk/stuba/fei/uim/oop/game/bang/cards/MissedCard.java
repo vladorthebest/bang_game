@@ -12,6 +12,7 @@ public class MissedCard extends NoneTargetCard {
 
     @Override
     public void use(Player usingPlayer) {
+        System.out.println("You cant use this card");
         usingPlayer.addCard(this);
     }
 }

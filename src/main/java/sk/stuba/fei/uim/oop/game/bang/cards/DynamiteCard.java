@@ -17,6 +17,7 @@ public class DynamiteCard extends NoneTargetCard {
     @Override
     public void use(Player usingPlayer) {
         if (!usingPlayer.addEffect(effect)){
+            System.out.println("You cant use this card");
             usingPlayer.addCard(this);
         }
     }
