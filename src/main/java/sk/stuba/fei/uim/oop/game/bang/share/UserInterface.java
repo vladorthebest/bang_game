@@ -1,6 +1,5 @@
 package sk.stuba.fei.uim.oop.game.bang.share;
 
-import sk.stuba.fei.uim.oop.game.bang.effects.BaseEffect;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 

@@ -1,5 +1,6 @@
-package sk.stuba.fei.uim.oop.game.bang.cards;
+package sk.stuba.fei.uim.oop.game.bang.cards.abs;
 
+import sk.stuba.fei.uim.oop.game.bang.cards.types.Color;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 
 public abstract class BaseCard {

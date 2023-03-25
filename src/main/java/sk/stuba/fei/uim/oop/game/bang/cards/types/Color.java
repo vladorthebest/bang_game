@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop.game.bang.cards;
+package sk.stuba.fei.uim.oop.game.bang.cards.types;
 
 public enum  Color {
     BLUE("\033[0;34m"),

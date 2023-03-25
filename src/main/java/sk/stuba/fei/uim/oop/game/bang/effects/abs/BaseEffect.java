@@ -1,5 +1,6 @@
-package sk.stuba.fei.uim.oop.game.bang.effects;
+package sk.stuba.fei.uim.oop.game.bang.effects.abs;
 
+import sk.stuba.fei.uim.oop.game.bang.effects.types.EffectType;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 
 public abstract class BaseEffect {

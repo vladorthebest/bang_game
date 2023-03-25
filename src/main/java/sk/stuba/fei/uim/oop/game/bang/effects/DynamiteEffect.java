@@ -1,12 +1,13 @@
 package sk.stuba.fei.uim.oop.game.bang.effects;
 
-import sk.stuba.fei.uim.oop.game.bang.cards.BaseCard;
+import sk.stuba.fei.uim.oop.game.bang.effects.abs.ActiveEffect;
+import sk.stuba.fei.uim.oop.game.bang.effects.types.EffectType;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 
 import java.util.LinkedList;
 import java.util.Random;
 
-public class DynamiteEffect extends ActiveEffect{
+public class DynamiteEffect extends ActiveEffect {
 
     private int chance;
     private Random randomGenerator = new Random();

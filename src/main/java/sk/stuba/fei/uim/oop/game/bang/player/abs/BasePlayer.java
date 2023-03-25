@@ -1,9 +1,8 @@
-package sk.stuba.fei.uim.oop.game.bang.player;
+package sk.stuba.fei.uim.oop.game.bang.player.abs;
 
-import sk.stuba.fei.uim.oop.game.bang.cards.BaseCard;
-import sk.stuba.fei.uim.oop.game.bang.effects.BaseEffect;
+import sk.stuba.fei.uim.oop.game.bang.cards.abs.BaseCard;
+import sk.stuba.fei.uim.oop.game.bang.effects.abs.BaseEffect;
 import sk.stuba.fei.uim.oop.game.bang.effects.MissedEffect;
-import sk.stuba.fei.uim.oop.game.bang.share.UserInterface;
 
 import java.util.LinkedList;
 

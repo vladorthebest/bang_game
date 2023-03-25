@@ -1,16 +1,12 @@
 package sk.stuba.fei.uim.oop.game.bang;
 
-import sk.stuba.fei.uim.oop.game.bang.effects.BaseEffect;
-import sk.stuba.fei.uim.oop.game.bang.effects.EffectType;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 import sk.stuba.fei.uim.oop.game.bang.share.Deck;
 import sk.stuba.fei.uim.oop.game.bang.share.UserInterface;
-import sk.stuba.fei.uim.oop.utility.KeyboardInput;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 public class Bang {
 

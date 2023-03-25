@@ -1,6 +1,7 @@
 package sk.stuba.fei.uim.oop.game.bang.share;
 
 import sk.stuba.fei.uim.oop.game.bang.cards.*;
+import sk.stuba.fei.uim.oop.game.bang.cards.abs.BaseCard;
 
 import java.util.LinkedList;
 import java.util.Random;

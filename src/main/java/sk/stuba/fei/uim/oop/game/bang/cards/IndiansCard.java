@@ -1,10 +1,13 @@
 package sk.stuba.fei.uim.oop.game.bang.cards;
 
+import sk.stuba.fei.uim.oop.game.bang.cards.abs.BaseCard;
+import sk.stuba.fei.uim.oop.game.bang.cards.abs.NoneTargetCard;
+import sk.stuba.fei.uim.oop.game.bang.cards.types.Color;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 
 import java.util.LinkedList;
 
-public class IndiansCard extends NoneTargetCard{
+public class IndiansCard extends NoneTargetCard {
 
     {
         this.name = "Indians";

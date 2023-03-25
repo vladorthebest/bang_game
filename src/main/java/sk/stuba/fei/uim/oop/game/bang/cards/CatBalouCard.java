@@ -1,6 +1,9 @@
 package sk.stuba.fei.uim.oop.game.bang.cards;
 
-import sk.stuba.fei.uim.oop.game.bang.effects.BaseEffect;
+import sk.stuba.fei.uim.oop.game.bang.cards.abs.BaseCard;
+import sk.stuba.fei.uim.oop.game.bang.cards.abs.TargetCard;
+import sk.stuba.fei.uim.oop.game.bang.cards.types.Color;
+import sk.stuba.fei.uim.oop.game.bang.effects.abs.BaseEffect;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
@@ -8,7 +11,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 
-public class CatBalouCard extends TargetCard{
+public class CatBalouCard extends TargetCard {
     private Random randomGenerator = new Random();
     ZKlavesnice in = new ZKlavesnice();
 

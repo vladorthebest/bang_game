@@ -1,11 +1,12 @@
 package sk.stuba.fei.uim.oop.game.bang.cards;
 
-import sk.stuba.fei.uim.oop.game.bang.effects.BarrelEffect;
-import sk.stuba.fei.uim.oop.game.bang.effects.BaseEffect;
+import sk.stuba.fei.uim.oop.game.bang.cards.abs.TargetCard;
+import sk.stuba.fei.uim.oop.game.bang.cards.types.Color;
+import sk.stuba.fei.uim.oop.game.bang.effects.abs.BaseEffect;
 import sk.stuba.fei.uim.oop.game.bang.effects.PrisonEffect;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 
-public class PrisonCard extends TargetCard{
+public class PrisonCard extends TargetCard {
 
     private BaseEffect effect;
     {

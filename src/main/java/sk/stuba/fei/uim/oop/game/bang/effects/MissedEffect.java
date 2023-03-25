@@ -1,11 +1,13 @@
 package sk.stuba.fei.uim.oop.game.bang.effects;
 
-import sk.stuba.fei.uim.oop.game.bang.cards.BaseCard;
+import sk.stuba.fei.uim.oop.game.bang.cards.abs.BaseCard;
+import sk.stuba.fei.uim.oop.game.bang.effects.abs.PassiveEffect;
+import sk.stuba.fei.uim.oop.game.bang.effects.types.EffectType;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 
 import java.util.Iterator;
 
-public class MissedEffect extends PassiveEffect{
+public class MissedEffect extends PassiveEffect {
     {
         this.name = "";
         this.priority = 2;
