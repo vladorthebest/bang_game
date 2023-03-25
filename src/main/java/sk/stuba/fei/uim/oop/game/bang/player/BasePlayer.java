@@ -27,7 +27,7 @@ public abstract class BasePlayer {
     }
 
     public boolean isDead() {
-        if(this.hp == 0){
+        if(this.hp <= 0){
             this.isDead = true;
         }
         return isDead;
