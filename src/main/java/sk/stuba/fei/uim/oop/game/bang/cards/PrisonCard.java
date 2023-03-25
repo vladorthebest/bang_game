@@ -16,10 +16,15 @@ public class PrisonCard extends TargetCard {
     }
     @Override
     public void use(Player usingPlayer) {
-        Player targetPlayer = super.targeting(usingPlayer);
+        Player targetPlayer = targeting(usingPlayer);
         if (!targetPlayer.addEffect(effect)){
             System.out.println("You cant use this card on this target");
             usingPlayer.addCard(this);
         }
+    }
+
+    @Override
+    protected Player targeting(Player usingPlayer) {
+        return usingPlayer.choiseOtherTarget();
     }
 }

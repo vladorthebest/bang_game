@@ -18,6 +18,23 @@ public class UserInterface {
     }
 
     public Player choiseTarget() {
+        drawPlayers();
+        while (true) {
+            int indexPlayer = ZKlavesnice.readInt("Input index target player: ") - 1;
+            if (indexPlayer < 0) {
+                System.out.println("Invalid index");
+            } else if (indexPlayer >= players.size()) {
+                System.out.println("Invalid index");
+            } else {
+                return players.get(indexPlayer);
+            }
+        }
+    }
+
+    public Player choiseOtherTarget(Player owner) {
+        LinkedList<Player> otherPlayers = new LinkedList<>(players);
+        otherPlayers.remove(owner);
+        drawPlayers(otherPlayers);
         while (true) {
             int indexPlayer = ZKlavesnice.readInt("Input index target player: ") - 1;
             if (indexPlayer < 0) {
@@ -36,6 +53,14 @@ public class UserInterface {
     }
 
     public void drawPlayers(){
+        int i=1;
+        for(Player player: players){
+            System.out.printf("Player%d: %s  HP: %d  Table: %s \n", i, player.getNickname(), player.getHP(), player.getTable());
+            i++;
+        }
+    }
+
+    public void drawPlayers(LinkedList<Player> players){
         int i=1;
         for(Player player: players){
             System.out.printf("Player%d: %s  HP: %d  Table: %s \n", i, player.getNickname(), player.getHP(), player.getTable());

@@ -179,7 +179,9 @@ public class Player extends BasePlayer {
     public Player choiseTarget() {
         return ui.choiseTarget();
     }
-
+    public Player choiseOtherTarget() {
+        return ui.choiseOtherTarget(this);
+    }
     public LinkedList<Player> getPlayers() {
         return players;
     }
