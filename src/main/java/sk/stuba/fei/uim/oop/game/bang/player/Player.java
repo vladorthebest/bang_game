@@ -20,7 +20,6 @@ public class Player extends BasePlayer{
     // ARGUMENTS
     private UserInterface ui;
     LinkedList<Player> players;
-
     private PlayerInterface uiPlayer;
     ZKlavesnice in = new ZKlavesnice();
     private Deck deck;

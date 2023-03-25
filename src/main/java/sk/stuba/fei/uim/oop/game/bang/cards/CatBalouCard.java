@@ -1,14 +1,12 @@
 package sk.stuba.fei.uim.oop.game.bang.cards;
 
 import sk.stuba.fei.uim.oop.game.bang.effects.BaseEffect;
-import sk.stuba.fei.uim.oop.game.bang.effects.EffectType;
 import sk.stuba.fei.uim.oop.game.bang.player.Player;
 import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class CatBalouCard extends TargetCard{
     private Random randomGenerator = new Random();
