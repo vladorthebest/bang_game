@@ -47,11 +47,8 @@ public class Player extends BasePlayer {
         BaseCard card;
         for (int i = 0; i < count; i++) {
             card = deck.draw();
-            System.out.println(card);
             if(card == null){
-
                 deck.getCards().addAll(resetDeck.getCards());
-                System.out.println(deck.toString());
                 card = deck.draw();
             }
             hand.add(card);
@@ -65,7 +62,6 @@ public class Player extends BasePlayer {
         for (int i = 0; i < count; i++) {
             card = deck.draw();
             if(card == null){
-                System.out.println("Deck is empty");
                 deck.getCards().addAll(resetDeck.getCards());
                 card = deck.draw();
             }
