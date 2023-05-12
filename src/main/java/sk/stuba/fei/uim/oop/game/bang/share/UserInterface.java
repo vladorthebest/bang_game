@@ -39,10 +39,10 @@ public class UserInterface {
             int indexPlayer = ZKlavesnice.readInt("Input index target player: ") - 1;
             if (indexPlayer < 0) {
                 System.out.println("Invalid index");
-            } else if (indexPlayer >= players.size()) {
+            } else if (indexPlayer >= otherPlayers.size()) {
                 System.out.println("Invalid index");
             } else {
-                return players.get(indexPlayer);
+                return otherPlayers.get(indexPlayer);
             }
         }
     }
